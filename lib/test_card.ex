@@ -8,6 +8,7 @@ defmodule TestCard do
 
     # Define workers and child supervisors to be supervised
     children = [
+      supervisor(TestCard.UserSupervisor, []),
       # Start the endpoint when the application starts
       supervisor(TestCard.Endpoint, []),
       # Start your own worker by calling: TestCard.Worker.start_link(arg1, arg2, arg3)

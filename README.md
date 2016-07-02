@@ -4,6 +4,9 @@
 
 Test card is an elixir application for testing pheonix channel clients.
 
+It implements a simple chat server that client libraries can interact with, to
+ensure their implementation works against an actual phoenix server.
+
 #### Running
 
 To start your Phoenix app:

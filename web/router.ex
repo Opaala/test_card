@@ -7,5 +7,7 @@ defmodule TestCard.Router do
 
   scope "/api", TestCard do
     pipe_through :api
+
+    resources "/users", UserController, only: [:create, :show, :delete]
   end
 end

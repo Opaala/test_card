@@ -17,7 +17,8 @@ defmodule TestCard.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {TestCard, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext]]
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :gproc,
+                    :exconstructor]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,6 +32,8 @@ defmodule TestCard.Mixfile do
     [{:phoenix, "~> 1.2.0"},
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:gproc, "~> 0.5.0"},
+     {:exconstructor, "~> 1.0.2"}]
   end
 end
