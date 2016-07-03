@@ -1,10 +1,10 @@
 defmodule TestCard.User do
   use TestCard.Web, :model
-  defstruct [:id, :topics]
+  defstruct [:id, :rooms]
   use ExConstructor
 
   @type t :: %__MODULE__{
     id: String.t,
-    topics: [String.t]
+    rooms: [String.t]
   }
 end

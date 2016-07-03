@@ -11,6 +11,6 @@ defmodule TestCard.UserView do
 
   def render("user.json", %{user: user}) do
     %{id: user.id,
-      topics: user.topics}
+      rooms: user.rooms}
   end
 end

@@ -2,7 +2,7 @@ defmodule TestCard.UserControllerTest do
   use TestCard.ConnCase
 
   alias TestCard.{User, UserServer}
-  @valid_attrs %{id: "test", topics: ["test", "test2"]}
+  @valid_attrs %{id: "test", rooms: ["test", "test2"]}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -15,7 +15,7 @@ defmodule TestCard.UserControllerTest do
     conn = get conn, user_path(conn, :show, user)
     assert json_response(conn, 200)["data"] == %{
       "id" => user.id,
-      "topics" => user.topics
+      "rooms" => user.rooms
     }
   end
 

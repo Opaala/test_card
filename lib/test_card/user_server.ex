@@ -36,10 +36,10 @@ defmodule TestCard.UserServer do
   @doc """
   Checks if the given topic is allowed for a user.
   """
-  @spec topic_allowed?(user_id, String.t) :: boolean
-  def topic_allowed?(user, topic) do
-    user |> name |> Agent.get(fn %User{topics: topics} ->
-      Enum.find(topics, &(&1 == topic)) != nil
+  @spec room_allowed?(user_id, String.t) :: boolean
+  def room_allowed?(user, room) do
+    user |> name |> Agent.get(fn %User{rooms: rooms} ->
+      Enum.find(rooms, &(&1 == room)) != nil
     end)
   end
 
