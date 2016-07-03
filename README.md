@@ -7,7 +7,12 @@ Test card is an elixir application for testing pheonix channel clients.
 It implements a simple chat server that client libraries can interact with, to
 ensure their implementation works against an actual phoenix server.
 
-#### Running
+#### Running Releases
+
+TODO
+----
+
+#### Running from Source
 
 To start your Phoenix app:
 
@@ -15,9 +20,6 @@ To start your Phoenix app:
   * Start Phoenix endpoint with `mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
 
 #### Interacting
 

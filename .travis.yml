@@ -1,0 +1,18 @@
+language: elixir
+elixir:
+  - 1.2.6
+  - 1.3.1
+otp_release:
+  - 18.2
+  - 19.0
+before_script: mix local.rebar --force
+before_deploy: "MIX_ENV=prod mix compile; MIX_ENV=prod mix release; cp rel/test_card/releases/${TRAVIS_TAG:1}/test_card.tar.gz test_card-${TRAVIS_TAG:1}-ubuntu.tar.gz"
+deploy:
+  provider: releases
+  api_key:
+    secure: "Jo76SMuP/bjIgwthyTcMX9Ab6cQ6FXfrouJuoR06SZLa5jPbQfAT/5egMyObJRBA/jtSrQVjb8NhrHLnfm1FNjN1cnMfjg3M/7qlaF3WE1KXcASVE6Z1wlBnVsTwo1j27ADfri6oJMoauR/ZjtFqQRhiioMcH9fGX2IL5I5eqd0fh9FYYCVu4Yv31AqvlU6vUa8vBHpfHzUJ5iumsFxDVBGPydskybKDg3ZJNfrLxdneKLAeOe6hkp4G5yrLvdbJDOqGRP8c7A3gFtU96o3tUHvcRTisXqrZZQ1Ahjn90a3F7WT7zFLRPl3Wt+F3NclkAvdnMHrmeOR50xvuMgU67GZ7SWXsqqnVWKYujwfHNUcHBGKUl78CCii++HwyvP9sPk1YQT3/6KGPSbZvqipBdV/d4nNiMbSuzbD3siubjYfMV3yqFXVY9jpRjeTH2tHxw3M1ozldPLwoiO0nK2KMTiLdtiTSwTa9TBOuN44nxAwCZZsZhWdMu+gNUVzkwuWi9ceQZPStX693N9adXh0PnQba/MqwSHUm0JM2jd+mIkukWlYvVeSRIoviJO3LAzm/FCAWu8EgQSz3V2TlfA8L9ADbEu2qHcN9g7b23dbR9Xr9QXsrQao1Gwfh8MhvuBbcMQwXpYWPxYiLuPvPfQ43m9IClg2lba8QNUJg9qBHfsQ="
+  file: "test_card-${TRAVIS_TAG:1}-ubuntu.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: true
+    condition: "($TRAVIS_ELIXIR_VERSION = 1.3.1) && ($TRAVIS_OTP_RELEASE = 19.0)"
