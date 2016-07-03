@@ -2,8 +2,7 @@ defmodule TestCard.RoomChannel do
   use TestCard.Web, :channel
 
   def join("room:" <> room, payload, socket) do
-    if authorized?(room, socket.id) do
-      # TODO: Add payload in here... if possible...
+    if authorized?(room, socket.assigns.user_id) do
       {:ok, payload, socket}
     else
       {:error, %{reason: "unauthorized"}}

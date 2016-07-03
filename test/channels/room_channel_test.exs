@@ -3,14 +3,14 @@ defmodule TestCard.RoomChannelTest do
 
   alias TestCard.{RoomChannel, UserServer, User}
 
-  @user_name "room_channel_user"
+  @user_id "room_channel_user"
 
   setup do
     {:ok, _pid} = UserServer.start_link(
-      %User{id: @user_name, rooms: ["lobby", "other"]}
+      %User{id: @user_id, rooms: ["lobby", "other"]}
     )
     {:ok, _, socket} =
-      socket(@user_name, %{some: :assign})
+      socket("something", %{user_id: @user_id})
       |> subscribe_and_join(RoomChannel, "room:lobby")
 
     {:ok, socket: socket}
@@ -18,7 +18,7 @@ defmodule TestCard.RoomChannelTest do
 
   test "join returns payload" do
     {:ok, payload, _socket} =
-      socket(@user_name, %{})
+      socket("something", %{user_id: @user_id})
       |> subscribe_and_join(RoomChannel, "room:other", %{"hello" => "there"})
 
     assert payload == %{"hello" => "there"}
@@ -26,7 +26,7 @@ defmodule TestCard.RoomChannelTest do
 
   test "join rejects unknown rooms" do
     {:error, %{reason: "unauthorized"}} =
-      socket(@user_name, %{})
+      socket("something", %{user_id: @user_id})
       |> subscribe_and_join(RoomChannel, "room:test")
   end
 

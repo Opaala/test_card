@@ -4,7 +4,7 @@ defmodule TestCard.UserController do
   alias TestCard.{User, UserSupervisor, UserServer}
 
   def create(conn, %{"user" => user_params}) do
-    user = user_params |> TestCard.User.new
+    user = user_params |> User.new
     UserSupervisor.add_user(user)
     conn |> put_status(:created) |> render("show.json", user: user) 
   end
@@ -19,7 +19,7 @@ defmodule TestCard.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = UserSupervisor.remove_user(id)
+    UserSupervisor.remove_user(id)
     send_resp(conn, :no_content, "")
   end
 end
