@@ -34,6 +34,7 @@ defmodule TestCard.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:gproc, "~> 0.5.0"},
-     {:exconstructor, "~> 1.0.2"}]
+     {:exconstructor, "~> 1.0.2"},
+     {:exrm, "~> 1.0.6"}]
   end
 end
