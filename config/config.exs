@@ -8,7 +8,6 @@ use Mix.Config
 # Configures the endpoint
 config :test_card, TestCard.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "xH0QS2iHmQ6vNRsr1LS67TZVrLj6Bx+EIsR5w6CCmqeXz/JM+gcIIEQ02ItFNiFh",
   render_errors: [view: TestCard.ErrorView, accepts: ~w(json)],
   pubsub: [name: TestCard.PubSub,
            adapter: Phoenix.PubSub.PG2]
